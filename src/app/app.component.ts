@@ -12,6 +12,7 @@ import { ProductService } from './shared/product.service';
 })
 export class AppComponent {
   title = 'FoodApp';
+  p: number = 1;
   forAdmin=0;
   prod : Product[];
   blog : blog[];

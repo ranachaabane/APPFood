@@ -156,11 +156,11 @@ div.desc {
 
   </div>
 </div>
-<div style="margin-left: 500px;height: 600px;width: 700px; margin-bottom: 200px;">
+<div style="margin-left: 500px;height: 500px;width: 700px; margin-bottom: 200px;">
 <h1 style="margin-left:800;margin-top: 80px;font-size: 100px;color: rgb(99, 59, 31);">OUR BLOG :</h1>
 
 <div class="row align-items-center">
-  <div style="padding: 20px;width: 300px;height: 300px;margin-bottom: 10px;" *ngFor="let t of blog" class="gallery">
+  <div style="padding: 20px;width: 300px;height: 300px;margin-bottom: 10px;" *ngFor="let t of blog | paginate: { itemsPerPage: 2, currentPage: p }" class="gallery">
     <a target="_blank" href="img_5terre.jpg">
       <img src="../assets/images/{{t.image}}" style="width: 100%;height: 60%;" alt="Cinque Terre">
     </a>
@@ -171,7 +171,10 @@ div.desc {
  <a [routerLink]="['articaldetail',t.id]" data-toggle="modal" data-target="#exampleModal6" style="color: rgb(99, 59, 31);margin-left: 120px;">read more</a>
   </div>
 
+  
   </div>
+  <div style="margin-left: 120px;font-size: 30px;">
+  <pagination-controls  (pageChange)="p = $event"></pagination-controls></div>
 </div>
       
 

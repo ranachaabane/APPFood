@@ -11,6 +11,7 @@ import { BackofficeModule } from './backoffice/backoffice.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DatePipe } from '@angular/common';
 import { ArticaldetailComponent } from './articaldetail/articaldetail.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ArticaldetailComponent } from './articaldetail/articaldetail.component'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [ DatePipe],
   bootstrap: [AppComponent]
