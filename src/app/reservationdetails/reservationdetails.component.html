@@ -1,0 +1,153 @@
+<div class="row">
+    <div class="col-md-6 form-group">
+      <label for="firstName">ajouter votre numero de phone</label>
+      <input type="text"  name="phone number" class="form-control" id="phone" #phone>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+          <button style="background-color: rgb(133, 115, 115);" (click)="getallReservations(phone.value)"  class="btn btn-primary btn-lg btn-block">chercher</button> 
+        </div>
+      </div>
+     
+   
+
+      <table *ngIf="show==1" class="table" style="border: 1;">
+        <thead>
+            <tr>
+                <th>id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>capacity</th>
+            <th>phone</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Message</th>
+         
+        </tr>
+        </thead>
+         <tbody >
+        <tr *ngFor="let t of reserv">
+       
+            <td style="width: 1px;">
+                {{t.id}}
+            </td>
+        <td>
+            {{t.firstName}}
+        </td>
+        <td>
+            {{t.lastName}}
+        </td>
+        <td>
+            {{t.email}}
+        </td>
+        <td>
+            {{t.capacity}}
+        </td>
+        <td>
+            {{t.phone}}
+        </td>
+        <td>
+            {{t.date}}
+        </td>
+        <td>
+          {{t.time}}
+      </td>
+        <td>
+            {{t.message}}
+        </td>
+        <td>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                  <button style="background-color: rgb(133, 115, 115);"(click)="deletereservation(t.id, t.phone)"  class="btn btn-primary btn-lg btn-block">annuler</button> 
+                </div>
+              </div>
+        </td>
+        <td>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                  <button style="background-color: rgb(89, 145, 123);" (click)="openejao(t.id ,t)"   class="btn btn-primary btn-lg btn-block">modifier</button> 
+                </div>
+              </div>
+        </td>
+        
+        </tr>
+        
+         </tbody>
+         </table>
+
+
+
+         <form style="margin-left: 380px;"  *ngIf="resevmodif" #form="ngForm">
+           <div class="row">
+            <div hidden style="width: 1px;"class="col-md-6 form-group">
+                <label for="m_lname">id</label>
+                <input type="text" [(ngModel)]="resevmodif.id" name="id" class="form-control" id="id">
+              </div>
+             <div class="col-md-6 form-group">
+               <label for="firstName">First Name</label>
+               <input type="text"  [(ngModel)]="resevmodif.firstName" name="firstName" class="form-control" id="firstName">
+             </div>
+             <div class="col-md-6 form-group">
+               <label for="m_lname">Last Name</label>
+               <input type="text" [(ngModel)]="resevmodif.lastName" name="lastName" class="form-control" id="m_lname">
+             </div>
+           </div>
+           <div class="row">
+             <div class="col-md-12 form-group">
+               <label for="m_email">Email</label>
+               <input type="email" class="form-control" [(ngModel)]="resevmodif.email" name="email" id="m_email">
+             </div>
+           </div>
+           <div class="row">
+             <div class="col-md-6 form-group">
+               <label for="m_people">How Many People</label>
+               <select name="" id="m_people" [(ngModel)]="resevmodif.capacity" name="capacity" class="form-control">
+                 <option value="1">1 People</option>
+                 <option value="2">2 People</option>
+                 <option value="3">3 People</option>
+                 <option value="4+">4+ People</option>
+               </select>
+             </div>
+             <div class="col-md-6 form-group">
+               <label for="m_phone">Phone</label>
+               <input type="text" class="form-control" [(ngModel)]="resevmodif.phone" name="phone" id="m_phone">
+             </div>
+           </div>
+
+           <div class="row">
+             <div class="col-md-6 form-group">
+               <label for="m_date">Date</label>
+               <input type="date" class="form-control"  [(ngModel)]="resevmodif.date" name="date" id="m_date">
+             </div>
+             <div class="col-md-6 form-group">
+              <label for="m_date">Time</label>
+              <input type="time" class="form-control"  [(ngModel)]="resevmodif.time" name="date" id="m_date">
+            </div>
+            
+           </div>
+
+           <div class="row">
+             <div class="col-md-12 form-group">
+               <label for="m_message">Message</label>
+               <textarea class="form-control" [(ngModel)]="resevmodif.message" name="message" id="m_message" cols="30" rows="7"></textarea>
+             </div>
+           </div>
+
+
+
+
+           
+           <div class="row">
+             <div class="col-md-12 form-group">
+               <button (click)="modifierreservation(resevmodif.id,resevmodif,resevmodif.phone)"  class="btn btn-primary btn-lg btn-block">modifier reservation</button> 
+             </div>
+           </div>
+
+         </form>
+
+
+        
+
+        
+</div>

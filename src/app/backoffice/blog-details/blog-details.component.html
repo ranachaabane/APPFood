@@ -1,0 +1,80 @@
+<h2>Mes Articles</h2>
+<input  type="text" class="form-control" placeholder="Search Food Here" [(ngModel)]="term">
+    <div  *ngFor="let t of blogliste | filter:term" class="container flex-container">
+      <img style="width: 100px; height: 100px;" src="../../../assets/images/{{t.image}}" alt="Nature" style="width:100%;">
+      <div style="width: 300px;" class="text-block">
+     
+        <h4>Titre de l'article :</h4>
+       
+        <p>{{t.titre}}</p>
+        <h4>Date de Creation :</h4>
+        <p>{{t.date}}</p>
+        <h4>Description de l'article :</h4>
+        <p>{{t.description}}</p>
+        <p style="color: rgb(250, 248, 248);">{{t.id}}</p>
+        
+      </div>
+  
+      <button style="background-color: rgb(133, 115, 115);"(click)="deletblog(t.id)"  class="btn btn-primary btn-lg btn-block">annuler</button> 
+      <button style="background-color: rgb(182, 91, 91);"(click)="openejao(t.id ,t)"  class="btn btn-primary btn-lg btn-block">modifier</button> 
+    </div>
+
+
+    <div *ngIf="show==1">
+       
+
+        <form [formGroup]="formGroup" #form="ngForm">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="titre"> Titre de l'article</label>
+                <input type="text" placeholder="Put Ur Titre" formControlName="titre"  [(ngModel)]="prodmodifi.titre" name="titre" class="form-control" id="titre">
+                <div class="alert alert-danger"
+                *ngIf="titre.invalid && (titre.dirty || titre.touched)">
+                <span *ngIf="titre.errors.required"> Name is Required !</span>
+                <span *ngIf="titre.errors.maxlength"> Name must be less than
+                    20</span>
+            </div>
+              </div>
+         
+        
+        
+        
+            </div>
+           
+            <div class="col-md-6 form-group">
+                <label for="m_date">Date</label>
+                <input   type="date"    class="form-control" formControlName="date"  [(ngModel)]="prodmodifi.date" name="date" id="m_date">
+                <div class="alert alert-danger"
+                *ngIf="date.invalid && (date.dirty || date.touched)">
+                <span *ngIf="date.errors.required">Date is Required !</span>
+           
+            </div>
+              </div>
+        
+            
+        
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <label for="m_description">description</label>
+                <textarea class="form-control" placeholder="Put a description" formControlName="description"  [(ngModel)]="prodmodifi.description" name="description" id="m_description" cols="30" rows="7"></textarea>
+                <div class="alert alert-danger"
+                *ngIf="description.invalid && (description.dirty || description.touched)">
+                <span *ngIf="description.errors.required">description is Required !</span>
+              
+            </div>
+              </div>
+            </div>
+        
+        
+        
+        
+            
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <button [disabled]="formGroup.invalid" (click)="updateblog(prodmodifi.id,prodmodifi)"  class="btn btn-primary btn-lg btn-block">Modifier Article </button> 
+              
+              </div>
+            </div>
+        
+          </form>
+    </div>

@@ -1,0 +1,219 @@
+<style>
+    .container {
+      position: relative;
+      font-family: Arial;
+    }
+    .flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+    .text-block {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: black;
+      color: white;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    </style>
+
+<body>
+
+    <h2>Mes Plats</h2>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <button class="nav-link" (click)="getallProduct()">All Plats <span class="sr-only">(current)</span></button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" (click)="getPizza()">Pizza Plats <span class="sr-only">(current)</span></button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" (click)="getSalad()">Salad Plats <span class="sr-only">(current)</span></button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" (click)="getStarter()">Starter Plats <span class="sr-only">(current)</span></button>
+          </li>
+          <li style="margin-left: 420px;" class="nav-item">
+          <input  type="text" class="form-control" placeholder="Search Food Here" [(ngModel)]="term">
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+ 
+    
+    <div  *ngIf="showMenu==1">
+    <div  *ngFor="let t of prod | filter:term" class="container flex-container">
+      <img style="width: 100px; height: 100px;" src="../../../assets/images/{{t.image}}" alt="Nature" style="width:100%;">
+      <div style="width: 300px;" class="text-block">
+     
+        <h4>Name :</h4>
+       
+        <p>{{t.name}}</p>
+        <h4>quantity :</h4>
+        <p>{{t.quantity}}</p>
+        <h4>Price :</h4>
+        <p>{{t.price}} DT</p>
+        <h4>Type :</h4>
+        <p>{{t.type}}</p>
+        <h4>Description :</h4>
+        <p>{{t.description}}</p>
+        <p style="color: black;">{{t.id}}</p>
+        
+      </div>
+  
+      <button style="background-color: rgb(133, 115, 115);"(click)="deletProduit(t.id)"  class="btn btn-primary btn-lg btn-block">annuler</button> 
+      <button style="background-color: rgb(182, 91, 91);"(click)="openejao(t.id ,t)"  class="btn btn-primary btn-lg btn-block">modifier</button> 
+    </div>
+  </div>
+  <div *ngIf="showMenu==2">
+    <div  *ngFor="let t of prodpizza  | filter:term" class="container">
+      <img style="width: 100px; height: 100px;" src="../../../assets/images/{{t.image}}" alt="Nature" style="width:100%;">
+      <div style="width: 300px;" class="text-block">
+     
+        <h4>Name :</h4>
+       
+        <p>{{t.name}}</p>
+        <h4>quantity :</h4>
+        <p>{{t.quantity}}</p>
+        <h4>Price :</h4>
+        <p>{{t.price}} DT</p>
+        <h4>Type :</h4>
+        <p>{{t.type}}</p>
+        <h4>Description :</h4>
+        <p>{{t.description}}</p>
+        <p style="color: black;">{{t.id}}</p>
+        
+      </div>
+      <button style="background-color: rgb(133, 115, 115);"(click)="deletProduit(t.id)"  class="btn btn-primary btn-lg btn-block">annuler</button> 
+      <button style="background-color: rgb(182, 91, 91);"(click)="openejao(t.id ,t)"  class="btn btn-primary btn-lg btn-block">modifier</button> 
+    </div>
+  </div>
+  <div *ngIf="showMenu==3">
+    <div *ngFor="let t of prodstarter  | filter:term" class="container">
+      <img style="width: 100px; height: 100px;" src="../../../assets/images/{{t.image}}" alt="Nature" style="width:100%;">
+      <div style="width: 300px;" class="text-block">
+     
+        <h4>Name :</h4>
+       
+        <p>{{t.name}}</p>
+        <h4>quantity :</h4>
+        <p>{{t.quantity}}</p>
+        <h4>Price :</h4>
+        <p>{{t.price}} DT</p>
+        <h4>Type :</h4>
+        <p>{{t.type}}</p>
+        <h4>Description :</h4>
+        <p>{{t.description}}</p>
+        <p style="color: black;">{{t.id}}</p>
+        
+      </div>
+      <button style="background-color: rgb(133, 115, 115);"(click)="deletProduit(t.id)"  class="btn btn-primary btn-lg btn-block">annuler</button> 
+      <button style="background-color: rgb(182, 91, 91);"(click)="openejao(t.id ,t)"  class="btn btn-primary btn-lg btn-block">modifier</button> 
+    </div>
+  </div>
+  <div *ngIf="showMenu==4">
+    <div  *ngFor="let t of prodsalad  | filter:term" class="container">
+      <img style="width: 100px; height: 100px;" src="../../../assets/images/{{t.image}}" alt="Nature" style="width:100%;">
+      <div style="width: 300px;" class="text-block">
+     
+        <h4>Name :</h4>
+       
+        <p>{{t.name}}</p>
+        <h4>quantity :</h4>
+        <p>{{t.quantity}}</p>
+        <h4>Price :</h4>
+        <p>{{t.price}} DT</p>
+        <h4>Type :</h4>
+        <p>{{t.type}}</p>
+        <h4>Description :</h4>
+        <p>{{t.description}}</p>
+        <p style="color: black;">{{t.id}}</p>
+        
+      </div>
+      <button style="background-color: rgb(133, 115, 115);"(click)="deletProduit(t.id)"  class="btn btn-primary btn-lg btn-block">annuler</button>
+      <button style="background-color: rgb(182, 91, 91);"(click)="openejao(t.id ,t)"  class="btn btn-primary btn-lg btn-block">modifier</button>  
+    </div>
+  </div>
+
+  <form style="margin-left: 80px;margin-right: 80px;" *ngIf="prodmodifi" #form="ngForm">
+    <div class="row">
+     <div hidden style="width: 1px;"class="col-md-6 form-group">
+         <label for="m_lname">id</label>
+         <input type="text" [(ngModel)]="prodmodifi.id" name="id" class="form-control" id="id">
+       </div>
+      <div class="col-md-6 form-group">
+        <label for="name"> Name</label>
+        <input type="text"  [(ngModel)]="prodmodifi.name" name="name" class="form-control" id="name">
+      </div>
+      <div class="col-md-6 form-group">
+        <label for="m_lname">Image</label>
+        <input type="text" [(ngModel)]="prodmodifi.image" name="image" class="form-control" id="m_lname">
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label for="m_plats">How Many plats</label>
+        <select name="" id="m_plats" [(ngModel)]="prodmodifi.quantity" name="quantity" class="form-control">
+          <option value="1">1 plats</option>
+          <option value="2">2 plats</option>
+          <option value="3">3 plats</option>
+          <option value="4">4 plats</option>
+          <option value="5">5 plats</option>
+          <option value="6">6 plats</option>
+          <option value="7">7 plats</option>
+          <option value="8+">8+ plats</option>
+        </select>
+
+      <div class="col-md-6 form-group">
+        <label for="m_price">Price</label>
+        <input placeholder="Put Ur price"  type="text" class="form-control" [(ngModel)]="prodmodifi.price" name="price" id="m_price">
+      
+      </div>
+    </div></div>
+
+    <div class="col-md-6 form-group">
+      <label for="m_plats">Type de plat</label>
+      <select name="" id="m_plats" [(ngModel)]="prodmodifi.type" name="type" class="form-control">
+        <option value="PIZZA">PIZZA</option>
+        <option value="SALAD">SALAD</option>
+        <option value="STARTER">STARTER</option>
+      
+      </select>
+   
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label for="m_message">Description</label>
+        <textarea class="form-control" [(ngModel)]="prodmodifi.description" name="description" id="m_message" cols="30" rows="7"></textarea>
+      </div>
+    </div>
+
+
+
+
+    
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <button  (click)="updateProduct(prodmodifi.id,prodmodifi)"  class="btn btn-primary btn-lg btn-block">modifier reservation</button> 
+      </div>
+    </div>
+
+  </form>
+      
+    
+    
+   
+    
+    </body>

@@ -1,0 +1,70 @@
+  <!-- Modal -->
+
+ 
+  <h1 class="mb-4">Ajouter Un Nouveau Article</h1>  
+  <form [formGroup]="formGroup" #form="ngForm">
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label for="titre"> Titre de l'article</label>
+        <input type="text" placeholder="Put Ur Titre" formControlName="titre"  [(ngModel)]="blog.titre" name="titre" class="form-control" id="titre">
+        <div class="alert alert-danger"
+        *ngIf="titre.invalid && (titre.dirty || titre.touched)">
+        <span *ngIf="titre.errors.required"> Name is Required !</span>
+        <span *ngIf="titre.errors.maxlength"> Name must be less than
+            20</span>
+    </div>
+      </div>
+      <div class="col-md-6 form-group">
+     
+                                    <label for="image">File</label>
+                                    <input formControlName="image" id="image" type="file" class="form-control"
+                                        (change)="onFileChange($event)">
+                                    <div *ngIf="image.touched && image.invalid" class="alert alert-danger">
+                                        <div *ngIf="image.errors.required">Image is required.</div>
+                                    </div>
+                                </div>
+
+                                <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:100px;margin-left: 40px;">
+
+
+    </div>
+   
+    <div class="col-md-6 form-group">
+        <label for="m_date">Date</label>
+        <input   type="date"    class="form-control" formControlName="date"  [(ngModel)]="blog.date" name="date" id="m_date">
+        <div class="alert alert-danger"
+        *ngIf="date.invalid && (date.dirty || date.touched)">
+        <span *ngIf="date.errors.required">Date is Required !</span>
+   
+    </div>
+      </div>
+
+    
+
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label for="m_description">description</label>
+        <textarea class="form-control" placeholder="Put a description" formControlName="description"  [(ngModel)]="blog.description" name="description" id="m_description" cols="30" rows="7"></textarea>
+        <div class="alert alert-danger"
+        *ngIf="description.invalid && (description.dirty || description.touched)">
+        <span *ngIf="description.errors.required">description is Required !</span>
+      
+    </div>
+      </div>
+    </div>
+
+
+
+
+    
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <button [disabled]="formGroup.invalid" (click)="addblog(blog,$event)"  class="btn btn-primary btn-lg btn-block">Ajouter Article </button> 
+      
+      </div>
+    </div>
+
+  </form>
+
+
+

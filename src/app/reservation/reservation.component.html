@@ -1,0 +1,113 @@
+  <!-- Modal -->
+
+ 
+                <h1 class="mb-4">Reserve A Table</h1>  
+                <form [formGroup]="formGroup" #form="ngForm">
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label for="firstName">First Name</label>
+                      <input type="text" placeholder="Put Ur firstName" formControlName="firstName"  [(ngModel)]="reserv.firstName" name="firstName" class="form-control" id="firstName">
+                      <div class="alert alert-danger"
+                      *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                      <span *ngIf="firstName.errors.required">First Name is Required !</span>
+                      <span *ngIf="firstName.errors.maxlength">First Name must be less than
+                          20</span>
+                  </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="m_lname">Last Name</label>
+                      <input type="text" placeholder="Put Ur lastName" formControlName="lastName" [(ngModel)]="reserv.lastName" name="lastName" class="form-control" id="m_lname">
+                      <div class="alert alert-danger"
+                      *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                      <span *ngIf="lastName.errors.required">lastName is Required !</span>
+                      <span *ngIf="lastName.errors.maxlength">lastName must be less than
+                          20</span>
+                  </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="m_email">Email</label>
+                      <input type="email" class="form-control" formControlName="email" placeholder="Put Ur email"  [(ngModel)]="reserv.email" name="email" id="m_email">
+                      <div class="alert alert-danger"
+                      *ngIf="email.invalid && (email.dirty || email.touched)">
+                      <span *ngIf="email.errors.required">Email is Required !</span>
+                      <span *ngIf="email.errors?.pattern">Wrong Format Email</span>
+                  </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label for="m_people">How Many People</label>
+                      <select name="" id="m_people" [(ngModel)]="reserv.capacity" formControlName="capacity" name="capacity" class="form-control">
+                        <option value="1">1 People</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4+">4+ People</option>
+                      </select>
+                      <div class="alert alert-danger"
+                      *ngIf="capacity.invalid && (capacity.dirty || capacity.touched)">
+                      <span *ngIf="capacity.errors.required">capacity is Required !</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="m_phone">Phone</label>
+                      <input placeholder="Put Ur phone Number" maxlength="8" formControlName="phone"  type="text" class="form-control" [(ngModel)]="reserv.phone" name="phone" id="m_phone">
+                      <div class="alert alert-danger"
+                      *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                      <span *ngIf="phone.errors.required">Phone is Required !</span>
+                    
+                  </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label for="m_date">Date</label>
+                      <input   type="date"    class="form-control" formControlName="date"  [(ngModel)]="reserv.date" name="date" id="m_date">
+                      <div class="alert alert-danger"
+                      *ngIf="date.invalid && (date.dirty || date.touched)">
+                      <span *ngIf="date.errors.required">Date is Required !</span>
+                 
+                  </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="m_date">Time</label>
+                      <input   type="time"    class="form-control" formControlName="time"  [(ngModel)]="reserv.time" name="time" id="m_date">
+                      <div class="alert alert-danger"
+                      *ngIf="date.invalid && (date.dirty || date.touched)">
+                      <span *ngIf="date.errors.required">Date is Required !</span>
+                 
+                  </div>
+                       
+                      </div>
+                   
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="m_message">Message</label>
+                      <textarea class="form-control" placeholder="Put a message" formControlName="message"  [(ngModel)]="reserv.message" name="message" id="m_message" cols="30" rows="7"></textarea>
+                      <div class="alert alert-danger"
+                      *ngIf="message.invalid && (message.dirty || message.touched)">
+                      <span *ngIf="message.errors.required">Message is Required !</span>
+                    
+                  </div>
+                    </div>
+                  </div>
+
+
+
+
+                  
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <button  [disabled]="formGroup.invalid"  (click)="addReservation(reserv)"  class="btn btn-primary btn-lg btn-block">Reserve Now</button> 
+                    
+                    </div>
+                  </div>
+
+                </form>
+       
+
+            

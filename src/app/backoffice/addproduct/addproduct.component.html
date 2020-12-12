@@ -1,0 +1,103 @@
+  <!-- Modal -->
+
+ 
+  <h1 class="mb-4">Ajouter Un Nouveau Plat</h1>  
+  <form [formGroup]="formGroup" #form="ngForm">
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label for="name"> Name</label>
+        <input type="text" placeholder="Put Ur name" formControlName="name"  [(ngModel)]="prod.name" name="name" class="form-control" id="name">
+        <div class="alert alert-danger"
+        *ngIf="name.invalid && (name.dirty || name.touched)">
+        <span *ngIf="name.errors.required"> Name is Required !</span>
+        <span *ngIf="name.errors.maxlength"> Name must be less than
+            20</span>
+    </div>
+      </div>
+      <div class="col-md-6 form-group">
+     
+                                    <label for="image">File</label>
+                                    <input formControlName="image" id="image" type="file" class="form-control"
+                                        (change)="onFileChange($event)">
+                                    <div *ngIf="image.touched && image.invalid" class="alert alert-danger">
+                                        <div *ngIf="image.errors.required">Image is required.</div>
+                                    </div>
+                                </div>
+
+                                <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:100px">
+
+
+    </div>
+   
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label for="m_plats">How Many plats</label>
+        <select name="" id="m_plats" [(ngModel)]="prod.quantity" formControlName="quantity" name="quantity" class="form-control">
+          <option value="1">1 plats</option>
+          <option value="2">2 plats</option>
+          <option value="3">3 plats</option>
+          <option value="4">4 plats</option>
+          <option value="5">5 plats</option>
+          <option value="6">6 plats</option>
+          <option value="7">7 plats</option>
+          <option value="8+">8+ plats</option>
+        </select>
+        <div class="alert alert-danger"
+        *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
+        <span *ngIf="quantity.errors.required">quantity is Required !</span>
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <label for="m_price">Price</label>
+        <input placeholder="Put Ur price" formControlName="price"  type="text" class="form-control" [(ngModel)]="prod.price" name="price" id="m_price">
+        <div class="alert alert-danger"
+        *ngIf="price.invalid && (price.dirty || price.touched)">
+        <span *ngIf="price.errors.required">price is Required !</span>
+        <span *ngIf="price.errors.maxlength">price Name must be less than 8</span>
+        <span *ngIf="price.errors.minlength">price Name must be more than 8</span>
+    </div>
+      </div>
+    </div>
+    <div class="col-md-6 form-group">
+      <label for="m_plats">Type de plat</label>
+      <select name="" id="m_plats" [(ngModel)]="prod.type" formControlName="type" name="type" class="form-control">
+        <option value="PIZZA">PIZZA</option>
+        <option value="SALAD">SALAD</option>
+        <option value="STARTER">STARTER</option>
+      
+      </select>
+      <div class="alert alert-danger"
+      *ngIf="type.invalid && (type.dirty || type.touched)">
+      <span *ngIf="type.errors.required">type is Required !</span>
+      </div>
+    </div>
+
+    
+
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label for="m_description">description</label>
+        <textarea class="form-control" placeholder="Put a description" formControlName="description"  [(ngModel)]="prod.description" name="description" id="m_description" cols="30" rows="7"></textarea>
+        <div class="alert alert-danger"
+        *ngIf="description.invalid && (description.dirty || description.touched)">
+        <span *ngIf="description.errors.required">description is Required !</span>
+      
+    </div>
+      </div>
+    </div>
+
+
+
+
+    
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <button [disabled]="formGroup.invalid" (click)="addProduct(prod,$event)"  class="btn btn-primary btn-lg btn-block">ajouterPlat </button> 
+      
+      </div>
+    </div>
+
+  </form>
+
+
+
