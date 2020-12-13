@@ -28,7 +28,7 @@ datestring : string;
   ngOnInit(
     
   ): void {
-    this.loggededInUser=JSON.parse(localStorage.getItem("User"));
+    this.loggededInUser=JSON.parse(localStorage.getItem("user"));
    
       this.rs.getallReservation().subscribe(data=>this.reserv=data);
 

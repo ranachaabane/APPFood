@@ -99,7 +99,7 @@ get capacity(){
     if (r == true) {
      
       this.show = 1;
-      this.rs.deleteReservation(id , phone).subscribe();
+      this.rs.deleteReservation(id , phone).subscribe(()=>{this.rs.getreservationbyphone(phone).subscribe(data=>this.reserv= data)});
       this.rs.getreservationbyphone(phone).subscribe(data=>this.reserv= data);
       confirm("Reservation supprimée avec sucees!");
     } else {
@@ -126,7 +126,7 @@ get capacity(){
     if (r == true) {
      
      
-      this.rs.updateReservation(id ,reserv).subscribe();
+      this.rs.updateReservation(id ,reserv).subscribe(()=>{this.rs.getreservationbyphone(phone).subscribe(data=>this.reserv= data)});
       this.rs.getreservationbyphone(phone).subscribe(data=>this.reserv= data);
       confirm("Reservation modifiée avec sucees!");
       this.resevmodif=null;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Model/Product';
 import { ProductService } from 'src/app/shared/product.service';
@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/shared/product.service';
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit {
+  @Input() item: string;
   term: string;
   prod : Product[];
   nbrprod =0;
@@ -38,7 +39,7 @@ export class ProductdetailsComponent implements OnInit {
     if (r == true) {
      
       this.show = 1;
-      this.rs.deleteProduct(id).subscribe();
+      this.rs.deleteProduct(id).subscribe(()=>{this.rs.getallProduct().subscribe(data=>this.prod= data);});
       this.rs.getallProduct().subscribe(data=>this.prod= data);
       this.rs.getallProduct().subscribe(data=>{this.productlist=data;
         this.nbrprod=this.productlist.length-1;});
@@ -68,7 +69,7 @@ export class ProductdetailsComponent implements OnInit {
     if (r == true) {
      
      
-      this.rs.updateProduit(id ,reserv).subscribe();
+      this.rs.updateProduit(id ,reserv).subscribe(()=>{ this.rs.getallProduct().subscribe(data=>this.prod= data);});
       this.rs.getallProduct().subscribe(data=>this.prod= data);
   
       this.prodmodifi=null;

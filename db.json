@@ -37,6 +37,20 @@
       "image": "kachumber-salad-4172358-hero-01-f2f984488fb74815bc6119c8525da2cf.jpg",
       "date": "2020-12-16",
       "description": "soft food benefits"
+    },
+    {
+      "id": 4,
+      "titre": "soft food",
+      "image": "images.jpg",
+      "date": "2020-12-17",
+      "description": "Produce, or the term used to describe fresh fruits and vegetables, is commonly purchased by grocery store shoppers. In terms of fruit, most grocery stores offer bananas, apples, oranges, blackberries, raspberries, grapes, pineapples, cantaloupes"
+    },
+    {
+      "id": 5,
+      "titre": "sea food",
+      "image": "salade-de-fruits-de-mer-aux-legumes-rotis-et-vinaigrette-a-la-moutarde.jpeg",
+      "date": "2020-12-19",
+      "description": "Food\nWhile eating at a restaurant is an enjoyable and convenient occasional treat, most individuals and families prepare their meals at home"
     }
   ],
   "Product": [
@@ -54,7 +68,7 @@
       "name": "Green salad",
       "image": "kachumber-salad-4172358-hero-01-f2f984488fb74815bc6119c8525da2cf.jpg",
       "quantity": "6",
-      "price": "6",
+      "price": "8",
       "type": "SALAD",
       "description": "tomate"
     },
@@ -79,10 +93,10 @@
   ],
   "users": {
     "id": 1,
-    "username": "string",
-    "email": "string",
-    "password": "string",
-    "confirmpassword": "string"
+    "username": "ranachaabane",
+    "email": "ranachaabane@esprit.tn",
+    "password": "ranach",
+    "confirmpassword": "ranach"
   },
   "reservation": [
     {
@@ -106,6 +120,28 @@
       "date": "2020-12-24",
       "time": "20:09",
       "message": "avec un bébe"
+    },
+    {
+      "id": 5,
+      "firstName": "yassine",
+      "lastName": "bayouth",
+      "email": "yassin.bayouth@esprit.tn",
+      "capacity": "3",
+      "phone": "28114329",
+      "date": "2020-12-12",
+      "time": "23:05",
+      "message": "nheb tawla bahtha chobek"
+    },
+    {
+      "id": 11,
+      "firstName": "salah",
+      "lastName": "ben salah",
+      "email": "salah.bensalah@esprit.tn",
+      "capacity": "4+",
+      "phone": "22222222",
+      "date": "2020-12-13",
+      "time": "17:03",
+      "message": "une table proche de la fenetre"
     }
   ]
 }

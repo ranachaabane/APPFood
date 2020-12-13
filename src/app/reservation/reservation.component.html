@@ -75,8 +75,8 @@
                       <label for="m_date">Time</label>
                       <input   type="time"    class="form-control" formControlName="time"  [(ngModel)]="reserv.time" name="time" id="m_date">
                       <div class="alert alert-danger"
-                      *ngIf="date.invalid && (date.dirty || date.touched)">
-                      <span *ngIf="date.errors.required">Date is Required !</span>
+                      *ngIf="time.invalid && (time.dirty || time.touched)">
+                      <span *ngIf="time.errors.required">Time is Required !</span>
                  
                   </div>
                        
